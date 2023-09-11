@@ -6,7 +6,7 @@ export default function useCategory() {
   // get categories
   const getCategories = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/all-categories");
+      const { data } = await axios.get("https://mern-backend-bu3c.onrender.com/api/v1/category/all-categories");
       setCategories(data?.category);
     } catch (error) {
       console.log(error);
