@@ -23,9 +23,11 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get("https://mern-backend-bu3c.onrender.com/api/v1/category/all-categories");
       if (data?.success) {
         setCategories(data?.category);
+        setoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -52,8 +54,10 @@ const HomePage = () => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get("https://mern-backend-bu3c.onrender.com/api/v1/product/product-count");
       setTotal(data?.total);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -116,6 +120,10 @@ const HomePage = () => {
         width={"100%"}
       />
       {/* banner image */}
+          {loading ? (
+        <Loader />
+      ) : (
+        <>
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
@@ -219,6 +227,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+             </>
+      )}
     </Layout>
   );
 };
