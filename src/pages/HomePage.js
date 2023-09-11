@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import Loader from "../components/Loader";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const HomePage = () => {
       const { data } = await axios.get("https://mern-backend-bu3c.onrender.com/api/v1/category/all-categories");
       if (data?.success) {
         setCategories(data?.category);
-        setoading(false);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -121,7 +122,7 @@ const HomePage = () => {
       />
       {/* banner image */}
           {loading ? (
-        <Loader />
+        <Loader/>
       ) : (
         <>
       <div className="container-fluid row mt-3 home-page">
