@@ -71,9 +71,9 @@ const HomePage = () => {
   //load more
   const loadMore = async () => {
     try {
-      setLoading(true);
+      
       const { data } = await axios.get(`https://mern-backend-bu3c.onrender.com/api/v1/product/product-list/${page}`);
-      setLoading(false);
+      
       setProducts([...products, ...data?.products]);
     } catch (error) {
       console.log(error);
