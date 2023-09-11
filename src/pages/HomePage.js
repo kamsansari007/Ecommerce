@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
-import Loader from "../components/Loader";
+import Loader from "../components/Layout/Loader";
 
 const HomePage = () => {
   const navigate = useNavigate();
