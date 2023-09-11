@@ -46,7 +46,7 @@ const CartPage = () => {
   // get payment gateway
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get("https://mern-backend-bu3c.onrender.com/api/v1/product/braintree/token");
       console.log(data);
       setClientToken(data?.clientToken);
     } catch (error) {
@@ -63,7 +63,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      const { data } = await axios.post("https://mern-backend-bu3c.onrender.com/api/v1/product/braintree/payment", {
         nonce,
         cart,
       });
