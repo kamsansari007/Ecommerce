@@ -20,6 +20,7 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [loadmore, setLoadMore] = useState(false);
 
   //get all cat
   const getAllCategory = async () => {
@@ -71,10 +72,10 @@ const HomePage = () => {
   //load more
   const loadMore = async () => {
     try {
-      
+      setLoadMore(true);
       const { data } = await axios.get(`https://mern-backend-bu3c.onrender.com/api/v1/product/product-list/${page}`);
-      
       setProducts([...products, ...data?.products]);
+      setLoadMore(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -215,8 +216,8 @@ const HomePage = () => {
                   setPage(page + 1);
                 }}
               >
-                {loading ? (
-                  "Loading ..."
+                {loadmore ? (
+                  "Loading..."
                 ) : (
                   <>
                     {" "}
