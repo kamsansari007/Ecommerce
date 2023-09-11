@@ -11,7 +11,7 @@ const Product = () => {
   // all products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/get-products");
+      const { data } = await axios.get("https://mern-backend-bu3c.onrender.com/api/v1/product/get-products");
       if (data?.success) {
         setProducts(data.products);
       }
@@ -40,7 +40,7 @@ const Product = () => {
               >
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`https://mern-backend-bu3c.onrender.com/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />
